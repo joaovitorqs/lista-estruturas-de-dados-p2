@@ -46,6 +46,15 @@ public class Fila {
         return inicio.valor;
     }
 
+    public void print() {
+        Node atual = inicio;
+
+        while (atual != null) {
+            System.out.printf(atual.valor + " ");
+            atual = atual.proximo;
+        }
+    }
+
     class Node {
 
         int valor;

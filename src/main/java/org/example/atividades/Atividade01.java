@@ -32,42 +32,21 @@ public class Atividade01 {
         System.out.println(" ");
         System.out.println("Relatorio 1");
 
-        for (int i = 0; i < 5; i++){
-            System.out.printf(fila.peek() + " ");
-            fila.dequeue();
-        }
-        for (int i = 0; i < 5; i++){
-            System.out.printf(pilha.peek()+ " ");
-            pilha.pop();
-        }
+        fila.print();
+        System.out.println(" ");
+        System.out.println(" ");
+        pilha.print();
 
         System.out.println(" ");
         System.out.println(" ");
         System.out.println("Relatorio 2");
-        fila.enqueue(10);
-        fila.enqueue(20);
-        fila.enqueue(30);
-        fila.enqueue(40);
-        fila.enqueue(50);
-
-        for (int i = 0; i < 5; i++){
-            System.out.printf(fila.peek() + " ");
-            fila.dequeue();
-        }
+        fila.print();
 
         System.out.println(" ");
         System.out.println(" ");
         System.out.println("Relatorio 3");
-        pilha.push(10);
-        pilha.push(20);
-        pilha.push(30);
-        pilha.push(40);
-        pilha.push(50);
+        pilha.print();
 
-        for (int i = 0; i < 5; i++){
-            System.out.printf(pilha.peek()+ " ");
-            pilha.pop();
-        }
         System.out.println(" ");
         System.out.println(" ");
 

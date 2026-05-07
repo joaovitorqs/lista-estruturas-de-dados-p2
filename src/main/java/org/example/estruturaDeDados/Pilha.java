@@ -37,6 +37,15 @@ public class Pilha {
         return topo == null;
     }
 
+    public void print() {
+        Node atual = topo;
+
+        while (atual != null) {
+            System.out.printf(atual.valor + " ");
+            atual = atual.proximo;
+        }
+    }
+
     class Node {
 
         int valor;
