@@ -39,14 +39,11 @@ public class Fila {
         return valor;
     }
 
-    public void imprimir() {
-
-        Node atual = inicio;
-
-        while (atual != null) {
-            System.out.println(atual.valor);
-            atual = atual.proximo;
+    public int peek() {
+        if (inicio == null) {
+            throw new RuntimeException("Fila vazia: não há elementos para visualizar.");
         }
+        return inicio.valor;
     }
 
     class Node {

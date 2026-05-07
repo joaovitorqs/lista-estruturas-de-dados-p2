@@ -71,6 +71,6 @@ public class Main {
                 }
             }
         }
-
+        scr.close();
     }
 }
