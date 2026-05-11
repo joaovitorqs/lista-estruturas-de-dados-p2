@@ -10,7 +10,7 @@ public class Atividade02 {
         Scanner scr = new Scanner(System.in);
         Boolean loop = true;
 
-        Pilha pilha = new Pilha();
+        Pilha<Integer> pilha = new Pilha();
 
         System.out.println("----------------------------------------------------");
         System.out.println("Run atividade 02");
@@ -52,10 +52,9 @@ public class Atividade02 {
                         aux = false;
                         System.out.println(" ");
                         System.out.printf("Valor removido da pilha:");
-                        System.out.printf(String.valueOf(pilha.peek()));
+                        System.out.printf(String.valueOf(pilha.pop()));
                         System.out.println(" ");
                         System.out.println(" ");
-                        pilha.pop();
                         break;
                     case 0:
                         aux = false;
