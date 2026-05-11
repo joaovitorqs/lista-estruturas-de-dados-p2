@@ -6,24 +6,27 @@ import org.example.estruturaDeDados.Pilha;
 import java.util.Scanner;
 
 public class Atividade03 {
+    private int contadorId = 0;
 
     class Aluno {
-        Integer id = 0;
+        Integer id;
         String nome;
         Fila notas;
 
-        public Aluno() {
-        }
         public Aluno(String nome) {
+            this.id = ++contadorId;
             this.nome = nome;
-            this.notas = new Fila();
+            this.notas = new Fila<Double>();
         }
-        public void addNota(Integer nota) {
+
+        public void addNota(Double nota) {
             this.notas.enqueue(nota);
         }
+
         public void removeNota() {
             this.notas.dequeue();
         }
+
         public Double mediaNota() {
             return this.notas.totalValue() / this.notas.size();
         }
@@ -31,7 +34,7 @@ public class Atividade03 {
 
     Pilha<Aluno> alunos = new Pilha<>();
 
-    public void runAtividade(){
+    public void runAtividade() {
         Scanner scr = new Scanner(System.in);
         Boolean loop = true;
 
@@ -62,13 +65,21 @@ public class Atividade03 {
                         aux = false;
                         System.out.println(" ");
                         System.out.printf("Digite o nome do aluno:");
+                        Integer id = alunos.size() + 1;
+                        String nome = scr.next();
+                        alunos.push(new Aluno(nome));
                         System.out.println(" ");
+                        System.out.println("Aluno cadastrado: ID " + alunos.peek().id + ", nome " + alunos.peek().nome);
                         System.out.println(" ");
                         break;
 
                     case 2:
                         aux = false;
-
+                        System.out.println(" ");
+                        System.out.printf("Digite ID do aluno:");
+                        Integer idAluno = scr.nextInt();
+                        System.out.printf("Digite a nota do aluno:");
+                        Double nota = scr.nextDouble();
                         break;
 
                     case 3:

@@ -1,6 +1,6 @@
 package org.example.estruturaDeDados;
 
-public class Fila {
+public class Fila<T> {
 
     private Node inicio;
     private Node fim;
@@ -8,7 +8,7 @@ public class Fila {
     public Fila() {
     }
 
-    public void enqueue(int valor) {
+    public void enqueue(T valor) {
 
         Node novo = new Node(valor);
 
@@ -22,13 +22,13 @@ public class Fila {
         fim = novo;
     }
 
-    public int dequeue() {
+    public T dequeue() {
 
         if (inicio == null) {
             throw new RuntimeException("Fila vazia");
         }
 
-        int valor = inicio.valor;
+        T valor = inicio.valor;
 
         inicio = inicio.proximo;
 
@@ -39,39 +39,58 @@ public class Fila {
         return valor;
     }
 
-    public int peek() {
+    public T peek() {
+
         if (inicio == null) {
-            throw new RuntimeException("Fila vazia: não há elementos para visualizar.");
+            throw new RuntimeException(
+                    "Fila vazia: não há elementos para visualizar."
+            );
         }
+
         return inicio.valor;
     }
 
     public void print() {
+
         Node atual = inicio;
 
         while (atual != null) {
-            System.out.printf(atual.valor + " ");
+
+            System.out.print(atual.valor + " ");
+
             atual = atual.proximo;
         }
     }
 
     public int size() {
+
         int count = 0;
+
         Node atual = inicio;
 
         while (atual != null) {
+
             count++;
+
             atual = atual.proximo;
         }
 
         return count;
     }
+
     public double totalValue() {
+
         double total = 0.0;
+
         Node atual = inicio;
 
         while (atual != null) {
-            total += atual.valor;
+
+            if (atual.valor instanceof Number) {
+
+                total += ((Number) atual.valor).doubleValue();
+            }
+
             atual = atual.proximo;
         }
 
@@ -80,10 +99,10 @@ public class Fila {
 
     class Node {
 
-        int valor;
+        T valor;
         Node proximo;
 
-        public Node(int valor) {
+        public Node(T valor) {
             this.valor = valor;
         }
     }
