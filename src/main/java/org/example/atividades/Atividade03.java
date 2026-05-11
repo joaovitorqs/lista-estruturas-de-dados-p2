@@ -1,10 +1,31 @@
 package org.example.atividades;
 
+import org.example.estruturaDeDados.Fila;
 import org.example.estruturaDeDados.Pilha;
 
 import java.util.Scanner;
 
 public class Atividade03 {
+
+    class Aluno {
+        Integer id;
+        String nome;
+        Fila notas;
+
+        public Aluno(String nome) {
+            this.nome = nome;
+            this.notas = new Fila();
+        }
+        public void addNota(Integer nota) {
+            this.notas.enqueue(nota);
+        }
+        public void removeNota() {
+            this.notas.dequeue();
+        }
+        public Double mediaNota() {
+            return this.notas.totalValue() / this.notas.size();
+        }
+    }
 
     public void runAtividade(){
         Scanner scr = new Scanner(System.in);

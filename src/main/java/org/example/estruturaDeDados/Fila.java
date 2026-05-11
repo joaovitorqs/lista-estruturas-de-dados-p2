@@ -55,6 +55,29 @@ public class Fila {
         }
     }
 
+    public int size() {
+        int count = 0;
+        Node atual = inicio;
+
+        while (atual != null) {
+            count++;
+            atual = atual.proximo;
+        }
+
+        return count;
+    }
+    public double totalValue() {
+        double total = 0.0;
+        Node atual = inicio;
+
+        while (atual != null) {
+            total += atual.valor;
+            atual = atual.proximo;
+        }
+
+        return total;
+    }
+
     class Node {
 
         int valor;
