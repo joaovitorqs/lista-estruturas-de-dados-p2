@@ -13,6 +13,30 @@ public class Atividade03 {
         String nome;
         Fila notas;
 
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public String getNome() {
+            return nome;
+        }
+
+        public void setNome(String nome) {
+            this.nome = nome;
+        }
+
+        public Fila getNotas() {
+            return notas;
+        }
+
+        public void setNotas(Fila notas) {
+            this.notas = notas;
+        }
+
         public Aluno(String nome) {
             this.id = ++contadorId;
             this.nome = nome;
@@ -30,7 +54,32 @@ public class Atividade03 {
         public Double mediaNota() {
             return this.notas.totalValue() / this.notas.size();
         }
+
+        public String buscarAlunoPorId(int id) {
+
+            Pilha<Aluno> auxiliar = new Pilha<>();
+
+            Aluno encontrado = null;
+
+            while (!alunos.vazia()) {
+
+                Aluno alunoAtual = alunos.pop();
+
+                if (alunoAtual.id == id) {
+                    encontrado = alunoAtual;
+                }
+
+                auxiliar.push(alunoAtual);
+            }
+
+            while (!auxiliar.vazia()) {
+                alunos.push(auxiliar.pop());
+            }
+
+            return encontrado.getNome();
+        }
     }
+
 
     Pilha<Aluno> alunos = new Pilha<>();
 
@@ -77,14 +126,21 @@ public class Atividade03 {
                         aux = false;
                         System.out.println(" ");
                         System.out.printf("Digite ID do aluno:");
-                        Integer idAluno = scr.nextInt();
-                        System.out.printf("Digite a nota do aluno:");
-                        Double nota = scr.nextDouble();
+                        Integer id02 = scr.nextInt();
+                        System.out.printf("Media do aluno " + alunos.peek().buscarAlunoPorId(id02) + ":");
+                        System.out.println(alunos.peek().mediaNota());
+                        System.out.println(" ");
                         break;
 
                     case 3:
                         aux = false;
-
+                        System.out.println(" ");
+                        System.out.printf("Digite ID do aluno:");
+                        Integer id03 = scr.nextInt();
+                        System.out.printf("Digite a nota do aluno " + alunos.peek().buscarAlunoPorId(id03) + ":");
+                        Double nota = scr.nextDouble();
+                        alunos.peek().addNota(nota);
+                        System.out.println(" ");
                         break;
                     case 4:
                         aux = false;
