@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.atividades.*;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -22,7 +23,7 @@ public class Main {
         System.out.println("----------------------------------------------------");
         System.out.println(" ");
 
-        while (loop){
+        while (loop) {
             Boolean aux = true;
             System.out.println("----------------------------------------------------");
             System.out.println("Selecione qual das atividades abaixo deseja rodar.");
@@ -34,41 +35,46 @@ public class Main {
             System.out.println("[ 5 ] Atividade 05.");
             System.out.println("[ 0 ] Fechar o programa.");
 
-            while (aux) {
-                System.out.println("----------------------------------------------------");
-                System.out.printf("Digite sua opção:");
-                int escolha = scr.nextInt();
+            try {
+                while (aux) {
+                    System.out.println("----------------------------------------------------");
+                    System.out.printf("Digite sua opção:");
+                    int escolha = scr.nextInt();
 
-                switch (escolha) {
-                    case 1:
-                        aux = false;
-                        atividade01.runAtividade();
-                        break;
+                    switch (escolha) {
+                        case 1:
+                            aux = false;
+                            atividade01.runAtividade();
+                            break;
 
-                    case 2:
-                        aux = false;
-                        atividade02.runAtividade();
-                        break;
+                        case 2:
+                            aux = false;
+                            atividade02.runAtividade();
+                            break;
 
-                    case 3:
-                        aux = false;
-                        atividade03.runAtividade();
-                        break;
-                    case 4:
-                        aux = false;
-                        atividade04.runAtividade();
-                        break;
-                    case 5:
-                        aux = false;
-                        atividade05.runAtividade();
-                        break;
-                    case 0:
-                        aux = false;
-                        loop = false;
-                        break;
-                    default:
-                        System.out.println("Camando invalido!");
+                        case 3:
+                            aux = false;
+                            atividade03.runAtividade();
+                            break;
+                        case 4:
+                            aux = false;
+                            atividade04.runAtividade();
+                            break;
+                        case 5:
+                            aux = false;
+                            atividade05.runAtividade();
+                            break;
+                        case 0:
+                            aux = false;
+                            loop = false;
+                            break;
+                        default:
+                            System.out.println("Camando invalido!");
+                    }
                 }
+            } catch (InputMismatchException e) {
+                System.out.println("Comando invalido!");
+                scr.nextLine();
             }
         }
         scr.close();

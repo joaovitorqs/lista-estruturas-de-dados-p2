@@ -2,11 +2,12 @@ package org.example.atividades;
 
 import org.example.estruturaDeDados.Pilha;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Atividade02 {
 
-    public void runAtividade(){
+    public void runAtividade() {
         Scanner scr = new Scanner(System.in);
         Boolean loop = true;
 
@@ -26,45 +27,49 @@ public class Atividade02 {
             System.out.println("[ 3 ] Excluir número.");
             System.out.println("[ 0 ] Sair.");
 
-            while (aux) {
-                System.out.println("----------------------------------------------------");
-                System.out.printf("Digite sua opção:");
-                int escolha = scr.nextInt();
+            try {
+                while (aux) {
+                    System.out.println("----------------------------------------------------");
+                    System.out.printf("Digite sua opção:");
+                    int escolha = scr.nextInt();
 
-                switch (escolha) {
-                    case 1:
-                        aux = false;
-                        System.out.printf("Numero a ser inserido na pilha:");
-                        int numero = scr.nextInt();
-                        pilha.push(numero);
-                        break;
+                    switch (escolha) {
+                        case 1:
+                            aux = false;
+                            System.out.printf("Numero a ser inserido na pilha:");
+                            int numero = scr.nextInt();
+                            pilha.push(numero);
+                            break;
 
-                    case 2:
-                        aux = false;
-                        System.out.println(" ");
-                        System.out.printf("Numero(s) par(es) da pilha:");
-                        pilha.printPar();
-                        System.out.println(" ");
-                        System.out.println(" ");
-                        break;
+                        case 2:
+                            aux = false;
+                            System.out.println(" ");
+                            System.out.printf("Numero(s) par(es) da pilha:");
+                            pilha.printPar();
+                            System.out.println(" ");
+                            System.out.println(" ");
+                            break;
 
-                    case 3:
-                        aux = false;
-                        System.out.println(" ");
-                        System.out.printf("Valor removido da pilha:");
-                        System.out.printf(String.valueOf(pilha.pop()));
-                        System.out.println(" ");
-                        System.out.println(" ");
-                        break;
-                    case 0:
-                        aux = false;
-                        loop = false;
-                        break;
-                    default:
-                        System.out.println("Camando invalido!");
+                        case 3:
+                            aux = false;
+                            System.out.println(" ");
+                            System.out.printf("Valor removido da pilha:");
+                            System.out.printf(String.valueOf(pilha.pop()));
+                            System.out.println(" ");
+                            System.out.println(" ");
+                            break;
+                        case 0:
+                            aux = false;
+                            loop = false;
+                            break;
+                        default:
+                            System.out.println("Camando invalido!");
+                    }
                 }
+            } catch (InputMismatchException e) {
+                System.out.println("Comando invalido!");
+                scr.nextLine();
             }
-
         }
     }
 }

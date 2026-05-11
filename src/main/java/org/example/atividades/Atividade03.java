@@ -3,6 +3,7 @@ package org.example.atividades;
 import org.example.estruturaDeDados.Fila;
 import org.example.estruturaDeDados.Pilha;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Atividade03 {
@@ -104,65 +105,69 @@ public class Atividade03 {
             System.out.println("[ 6 ] Excluir nota.");
             System.out.println("[ 0 ] Sair.");
 
-            while (aux) {
-                System.out.println("----------------------------------------------------");
-                System.out.printf("Digite sua opção:");
-                int escolha = scr.nextInt();
+            try {
+                while (aux) {
+                    System.out.println("----------------------------------------------------");
+                    System.out.printf("Digite sua opção:");
+                    int escolha = scr.nextInt();
 
-                switch (escolha) {
-                    case 1:
-                        aux = false;
-                        System.out.println(" ");
-                        System.out.printf("Digite o nome do aluno:");
-                        Integer id = alunos.size() + 1;
-                        String nome = scr.next();
-                        alunos.push(new Aluno(nome));
-                        System.out.println(" ");
-                        System.out.println("Aluno cadastrado: ID " + alunos.peek().id + ", nome " + alunos.peek().nome);
-                        System.out.println(" ");
-                        break;
+                    switch (escolha) {
+                        case 1:
+                            aux = false;
+                            System.out.println(" ");
+                            System.out.printf("Digite o nome do aluno:");
+                            Integer id = alunos.size() + 1;
+                            String nome = scr.next();
+                            alunos.push(new Aluno(nome));
+                            System.out.println(" ");
+                            System.out.println("Aluno cadastrado: ID " + alunos.peek().id + ", nome " + alunos.peek().nome);
+                            System.out.println(" ");
+                            break;
 
-                    case 2:
-                        aux = false;
-                        System.out.println(" ");
-                        System.out.printf("Digite ID do aluno:");
-                        Integer id02 = scr.nextInt();
-                        System.out.printf("Media do aluno " + alunos.peek().buscarAlunoPorId(id02) + ":");
-                        System.out.println(alunos.peek().mediaNota());
-                        System.out.println(" ");
-                        break;
+                        case 2:
+                            aux = false;
+                            System.out.println(" ");
+                            System.out.printf("Digite ID do aluno:");
+                            Integer id02 = scr.nextInt();
+                            System.out.printf("Media do aluno " + alunos.peek().buscarAlunoPorId(id02) + ":");
+                            System.out.println(alunos.peek().mediaNota());
+                            System.out.println(" ");
+                            break;
 
-                    case 3:
-                        aux = false;
-                        System.out.println(" ");
-                        System.out.printf("Digite ID do aluno:");
-                        Integer id03 = scr.nextInt();
-                        System.out.printf("Digite a nota do aluno " + alunos.peek().buscarAlunoPorId(id03) + ":");
-                        Double nota = scr.nextDouble();
-                        alunos.peek().addNota(nota);
-                        System.out.println(" ");
-                        break;
-                    case 4:
-                        aux = false;
+                        case 3:
+                            aux = false;
+                            System.out.println(" ");
+                            System.out.printf("Digite ID do aluno:");
+                            Integer id03 = scr.nextInt();
+                            System.out.printf("Digite a nota do aluno " + alunos.peek().buscarAlunoPorId(id03) + ":");
+                            Double nota = scr.nextDouble();
+                            alunos.peek().addNota(nota);
+                            System.out.println(" ");
+                            break;
+                        case 4:
+                            aux = false;
 
-                        break;
-                    case 5:
-                        aux = false;
+                            break;
+                        case 5:
+                            aux = false;
 
-                        break;
-                    case 6:
-                        aux = false;
+                            break;
+                        case 6:
+                            aux = false;
 
-                        break;
-                    case 0:
-                        aux = false;
-                        loop = false;
-                        break;
-                    default:
-                        System.out.println("Camando invalido!");
+                            break;
+                        case 0:
+                            aux = false;
+                            loop = false;
+                            break;
+                        default:
+                            System.out.println("Camando invalido!");
+                    }
                 }
+            } catch (InputMismatchException e) {
+                System.out.println("Comando invalido!");
+                scr.nextLine();
             }
-
         }
     }
 }
