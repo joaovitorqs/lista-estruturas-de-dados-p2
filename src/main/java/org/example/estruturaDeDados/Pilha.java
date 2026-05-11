@@ -1,9 +1,10 @@
 package org.example.estruturaDeDados;
 
-public class Pilha {
+public class Pilha<T> {
+
     private Node topo;
 
-    public void push(int valor) {
+    public void push(T valor) {
 
         Node novo = new Node(valor);
 
@@ -11,20 +12,20 @@ public class Pilha {
         topo = novo;
     }
 
-    public int pop() {
+    public T pop() {
 
         if (topo == null) {
             throw new RuntimeException("Pilha vazia");
         }
 
-        int valor = topo.valor;
+        T valor = topo.valor;
 
         topo = topo.proximo;
 
         return valor;
     }
 
-    public int peek() {
+    public T peek() {
 
         if (topo == null) {
             throw new RuntimeException("Pilha vazia");
@@ -38,30 +39,58 @@ public class Pilha {
     }
 
     public void print() {
+
         Node atual = topo;
 
         while (atual != null) {
-            System.out.printf(atual.valor + " ");
+
+            System.out.print(atual.valor + " ");
+
             atual = atual.proximo;
         }
     }
-    public void printPar() {
+
+    public int size() {
+
+        int count = 0;
+
         Node atual = topo;
 
         while (atual != null) {
-            if (atual.valor % 2 == 0) {
-                System.out.printf(atual.valor + " ");
+
+            count++;
+
+            atual = atual.proximo;
+        }
+
+        return count;
+    }
+
+    public void printPar() {
+
+        Node atual = topo;
+
+        while (atual != null) {
+
+            if (atual.valor instanceof Integer) {
+
+                Integer valor = (Integer) atual.valor;
+
+                if (valor % 2 == 0) {
+                    System.out.print(valor + " ");
+                }
             }
-        atual = atual.proximo;
+
+            atual = atual.proximo;
         }
     }
 
     class Node {
 
-        int valor;
+        T valor;
         Node proximo;
 
-        public Node(int valor) {
+        public Node(T valor) {
             this.valor = valor;
         }
     }

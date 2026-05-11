@@ -8,10 +8,12 @@ import java.util.Scanner;
 public class Atividade03 {
 
     class Aluno {
-        Integer id;
+        Integer id = 0;
         String nome;
         Fila notas;
 
+        public Aluno() {
+        }
         public Aluno(String nome) {
             this.nome = nome;
             this.notas = new Fila();
@@ -26,6 +28,8 @@ public class Atividade03 {
             return this.notas.totalValue() / this.notas.size();
         }
     }
+
+    Pilha<Aluno> alunos = new Pilha<>();
 
     public void runAtividade(){
         Scanner scr = new Scanner(System.in);
@@ -56,7 +60,10 @@ public class Atividade03 {
                 switch (escolha) {
                     case 1:
                         aux = false;
-
+                        System.out.println(" ");
+                        System.out.printf("Digite o nome do aluno:");
+                        System.out.println(" ");
+                        System.out.println(" ");
                         break;
 
                     case 2:
