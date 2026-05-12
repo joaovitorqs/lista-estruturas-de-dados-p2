@@ -4,6 +4,71 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Atividade05 {
+    int idTipoAcressimo = 0;
+    int idProdutoAcressimo = 0;
+
+    class Tipo {
+        int id;
+        String tipo;
+        Double imposto;
+
+        public Tipo(String tipo, Double imposto) {
+            this.id = ++idTipoAcressimo;
+            this.tipo = tipo;
+            this.imposto = imposto;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public String getTipo() {
+            return tipo;
+        }
+
+        public void setTipo(String tipo) {
+            this.tipo = tipo;
+        }
+
+        public Double getImposto() {
+            return imposto;
+        }
+
+        public void setImposto(Double imposto) {
+            this.imposto = imposto;
+        }
+    }
+    class Produto {
+        int id;
+        Double preco;
+        Tipo tipo;
+
+        public Produto(Double preco, Tipo tipo) {
+            this.id = ++idProdutoAcressimo;
+            this.preco = preco;
+            this.tipo = tipo;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public Double getPreco() {
+            return preco;
+        }
+
+        public void setPreco(Double preco) {
+            this.preco = preco;
+        }
+
+        public Tipo getTipo() {
+            return tipo;
+        }
+
+        public void setTipo(Tipo tipo) {
+            this.tipo = tipo;
+        }
+    }
 
     public void runAtividade(){
         Scanner scr = new Scanner(System.in);
