@@ -116,7 +116,25 @@ public class Atividade05 {
                             break;
                         case 2:
                             aux = false;
+                            System.out.println(" ");
+                            System.out.printf("Digite o preço: ");
+                            double auxPreco = scr.nextDouble();
+                            scr.nextLine();
+                            System.out.printf("Digite o tipo:");
+                            String auxTipoProduto = scr.nextLine();
 
+                            boolean encontrado = false;
+                            for (Tipo tipo1 : tipos) {
+                                if (tipo1.getTipo().equals(auxTipoProduto)) {
+                                    produtos.add(new Produto(auxPreco, tipo1));
+                                    encontrado = true;
+                                }
+                            }
+                            if (!encontrado) {
+                                System.out.println(" ");
+                                System.out.printf("Tipo de produto inexistente!");
+                                System.out.println(" ");
+                            }
                             break;
                         case 3:
                             aux = false;
