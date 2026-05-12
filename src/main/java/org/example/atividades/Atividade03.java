@@ -105,6 +105,19 @@ public class Atividade03 {
             alunos.push(auxiliar.pop());
         }
     }
+    public void excluirAluno() {
+
+        if(!alunos.vazia()) {
+            Aluno alunoAtual = alunos.peek();
+
+            if (alunoAtual.notas.vazia() == false) {
+                System.out.println("Aluno "+alunoAtual.nome+" Possui nota, logo não pode ser excluido!");
+            } else if (alunoAtual.notas.vazia() == true){
+                System.out.println(alunoAtual.nome+" foi excluido!");
+                alunos.pop();
+            }
+        }
+    }
 
 
     Pilha<Aluno> alunos = new Pilha<>();
@@ -188,7 +201,9 @@ public class Atividade03 {
                             break;
                         case 5:
                             aux = false;
-
+                            System.out.println(" ");
+                            excluirAluno();
+                            System.out.println(" ");
                             break;
                         case 6:
                             aux = false;
