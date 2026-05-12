@@ -12,7 +12,7 @@ public class Atividade03 {
     class Aluno {
         Integer id;
         String nome;
-        Fila notas;
+        Fila<Double> notas;
 
         public Integer getId() {
             return id;
@@ -30,11 +30,11 @@ public class Atividade03 {
             this.nome = nome;
         }
 
-        public Fila getNotas() {
+        public Fila<Double> getNotas() {
             return notas;
         }
 
-        public void setNotas(Fila notas) {
+        public void setNotas(Fila<Double> notas) {
             this.notas = notas;
         }
 
@@ -53,54 +53,56 @@ public class Atividade03 {
         }
 
         public Double mediaNota() {
-            return this.notas.totalValue() / this.notas.size();
+            if (this.notas.size() == 0) {
+                return 0.0;
+            }else {
+                return this.notas.totalValue() / this.notas.size();
+            }
         }
 
-        public String buscarAlunoPorId(int id) {
+    }
+    public Aluno buscarAlunoPorId(int id) {
 
-            Pilha<Aluno> auxiliar = new Pilha<>();
+        Pilha<Aluno> auxiliar = new Pilha<>();
 
-            Aluno encontrado = null;
+        Aluno encontrado = null;
 
-            while (!alunos.vazia()) {
+        while (!alunos.vazia()) {
 
-                Aluno alunoAtual = alunos.pop();
+            Aluno alunoAtual = alunos.pop();
 
-                if (alunoAtual.id == id) {
-                    encontrado = alunoAtual;
-                }
-
-                auxiliar.push(alunoAtual);
+            if (alunoAtual.id.equals(id)) {
+                encontrado = alunoAtual;
             }
 
-            while (!auxiliar.vazia()) {
-                alunos.push(auxiliar.pop());
-            }
-
-            return encontrado.getNome();
+            auxiliar.push(alunoAtual);
         }
-        public String buscarAlunoSemNota() {
 
-            Pilha<Aluno> auxiliar = new Pilha<>();
+        while (!auxiliar.vazia()) {
+            alunos.push(auxiliar.pop());
+        }
 
-            Aluno encontrado = null;
+        return encontrado;
+    }
+    public void buscarAlunoSemNota() {
 
-            while (!alunos.vazia()) {
+        Pilha<Aluno> auxiliar = new Pilha<>();
 
-                Aluno alunoAtual = alunos.pop();
+        Aluno encontrado = null;
 
-                if (alunoAtual.notas == null) {
-                    encontrado = alunoAtual;
-                }
+        while (!alunos.vazia()) {
 
-                auxiliar.push(alunoAtual);
+            Aluno alunoAtual = alunos.pop();
+
+            if (alunoAtual.notas.vazia()) {
+                System.out.printf(alunoAtual.nome+" ");
             }
 
-            while (!auxiliar.vazia()) {
-                alunos.push(auxiliar.pop());
-            }
+            auxiliar.push(alunoAtual);
+        }
 
-            return encontrado.getNome();
+        while (!auxiliar.vazia()) {
+            alunos.push(auxiliar.pop());
         }
     }
 
@@ -151,9 +153,15 @@ public class Atividade03 {
                             System.out.println(" ");
                             System.out.printf("Digite ID do aluno:");
                             Integer id02 = scr.nextInt();
-                            System.out.printf("Digite a nota do aluno " + alunos.peek().buscarAlunoPorId(id02) + ":");
-                            Double nota = scr.nextDouble();
-                            alunos.peek().addNota(nota);
+                            Aluno aluno02 = buscarAlunoPorId(id02);
+                            if (aluno02 != null) {
+                                System.out.printf("Digite a nota do aluno " + aluno02.getNome() + ": ");
+                                Double nota = scr.nextDouble();
+
+                                aluno02.addNota(nota);
+                            } else {
+                                System.out.println("Aluno não encontrado!");
+                            }
                             System.out.println(" ");
                             break;
 
@@ -162,15 +170,20 @@ public class Atividade03 {
                             System.out.println(" ");
                             System.out.printf("Digite ID do aluno:");
                             Integer id03 = scr.nextInt();
-                            System.out.printf("Media do aluno " + alunos.peek().buscarAlunoPorId(id03) + ":");
-                            System.out.println(alunos.peek().mediaNota());
+                            Aluno aluno03 = buscarAlunoPorId(id03);
+                            if (aluno03 != null) {
+                            System.out.printf("Media do aluno " + aluno03.getNome() + ":");
+                            System.out.println(aluno03.mediaNota());
+                            } else {
+                                System.out.println("Aluno não encontrado!");
+                            }
                             System.out.println(" ");
                             break;
                         case 4:
                             aux = false;
                             System.out.println(" ");
                             System.out.printf("Alunos sem nota:");
-                            System.out.printf(alunos.peek().buscarAlunoSemNota());
+                            buscarAlunoSemNota();
                             System.out.println(" ");
                             break;
                         case 5:

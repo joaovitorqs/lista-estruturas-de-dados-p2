@@ -96,6 +96,9 @@ public class Fila<T> {
 
         return total;
     }
+    public boolean vazia() {
+        return inicio == null;
+    }
 
     class Node {
 
