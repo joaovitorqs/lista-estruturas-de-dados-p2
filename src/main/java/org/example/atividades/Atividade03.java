@@ -207,7 +207,17 @@ public class Atividade03 {
                             break;
                         case 6:
                             aux = false;
-
+                            System.out.println(" ");
+                            System.out.printf("Digite ID do aluno:");
+                            Integer id06 = scr.nextInt();
+                            Aluno aluno06 = buscarAlunoPorId(id06);
+                            if (aluno06 != null) {
+                                aluno06.removeNota();
+                                System.out.printf("Nota removida do aluno " + aluno06.getNome()+".");
+                            } else {
+                                System.out.println("Aluno não encontrado!");
+                            }
+                            System.out.println(" ");
                             break;
                         case 0:
                             aux = false;
