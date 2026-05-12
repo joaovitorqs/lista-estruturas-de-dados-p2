@@ -1,6 +1,8 @@
 package org.example.atividades;
 
 import java.util.InputMismatchException;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class Atividade05 {
@@ -38,6 +40,7 @@ public class Atividade05 {
             this.imposto = imposto;
         }
     }
+
     class Produto {
         int id;
         Double preco;
@@ -70,9 +73,12 @@ public class Atividade05 {
         }
     }
 
-    public void runAtividade(){
+    public void runAtividade() {
         Scanner scr = new Scanner(System.in);
         Boolean loop = true;
+
+        Queue<Tipo> tipos = new LinkedList<>();
+        Queue<Produto> produtos = new LinkedList<>();
 
         System.out.println("----------------------------------------------------");
         System.out.println("Run atividade 05");
@@ -98,7 +104,15 @@ public class Atividade05 {
                     switch (escolha) {
                         case 1:
                             aux = false;
-
+                            System.out.println(" ");
+                            System.out.printf("Digite o tipo [A,B,C...]:");
+                            scr.nextLine();
+                            String auxTipo = scr.nextLine();
+                            System.out.println(" ");
+                            System.out.printf("Digite o imposto para o tipo " + auxTipo + " [Ex 0,05]:");
+                            double auxImposto = scr.nextDouble();
+                            Tipo tipo = new Tipo(auxTipo, auxImposto);
+                            tipos.add(tipo);
                             break;
                         case 2:
                             aux = false;
