@@ -123,14 +123,14 @@ public class Atividade05 {
                             System.out.printf("Digite o tipo:");
                             String auxTipoProduto = scr.nextLine();
 
-                            boolean encontrado = false;
+                            boolean encontrado02 = false;
                             for (Tipo tipo1 : tipos) {
                                 if (tipo1.getTipo().equals(auxTipoProduto)) {
                                     produtos.add(new Produto(auxPreco, tipo1));
-                                    encontrado = true;
+                                    encontrado02 = true;
                                 }
                             }
-                            if (!encontrado) {
+                            if (!encontrado02) {
                                 System.out.println(" ");
                                 System.out.printf("Tipo de produto inexistente!");
                                 System.out.println(" ");
@@ -138,7 +138,23 @@ public class Atividade05 {
                             break;
                         case 3:
                             aux = false;
+                            System.out.println(" ");
+                            System.out.printf("Digite o ID do produto: ");
+                            int auxId = scr.nextInt();
 
+                            boolean encontrado03 = false;
+                            for (Produto produto : produtos) {
+                                if (produto.getId() == auxId) {
+                                    Double valorCalculado = produto.getPreco() - (produto.getPreco() * produto.getTipo().getImposto());
+                                    System.out.println("Preço = " + valorCalculado);
+                                    encontrado03 = true;
+                                }
+                            }
+                            if (!encontrado03) {
+                                System.out.println(" ");
+                                System.out.printf("Produto inexistente!");
+                                System.out.println(" ");
+                            }
                             break;
                         case 4:
                             aux = false;
