@@ -159,6 +159,37 @@ public class Atividade05 {
                         case 4:
                             aux = false;
 
+                            Tipo tipoRemover = null;
+
+                            for (Tipo tipo1 : tipos) {
+
+                                boolean possuiProduto = false;
+                                for (Produto produto : produtos) {
+                                    if (produto.getTipo() == tipo1) {
+                                        possuiProduto = true;
+                                        break;
+                                    }
+                                }
+
+                                if (!possuiProduto) {
+                                    tipoRemover = tipo1;
+                                    break;
+                                }
+                            }
+
+                            if (tipoRemover != null) {
+                                tipos.remove(tipoRemover);
+
+                                System.out.println(" ");
+                                System.out.println("Tipo " + tipoRemover.getTipo() + " excluído!");
+                                System.out.println(" ");
+
+                            } else {
+                                System.out.println(" ");
+                                System.out.println("Todos os tipos possuem produtos vinculados!");
+                                System.out.println(" ");
+                            }
+
                             break;
                         case 0:
                             aux = false;
